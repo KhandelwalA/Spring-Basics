@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+<!-- <bean/> definitions here -->
+	<bean id="firstEngine" class="com.khandelwal.collection.Engine">
+		<property name="year" value="2000" />
+	</bean>
+	<bean id="secondEngine" class="com.khandelwal.collection.Engine">
+		<property name="year" value="2001" />
+	</bean>
+	<bean id="thirdEngine" class="com.khandelwal.collection.Engine">
+		<property name="year" value="2002" />
+	</bean>
+	<bean id="fourthEngine" class="com.khandelwal.collection.Engine">
+		<property name="year" value="2003" />
+	</bean>
+
+	<bean id="car" class="com.khandelwal.collection.Car">
+		<!--Start: Injecting List collection -->
+		<property name="listEngine">
+			<util:list>
+			 <ref bean="firstEngine"/>
+			 <ref bean="secondEngine"/>
+			 <ref bean="thirdEngine"/>
+			 <ref bean="fourthEngine"/>
+			</util:list>
+		</property>
+		<!--End: Injecting List collection -->
+		
+		<!--Start: Injecting Set collection -->
+		<property name="setEngine">
+			<util:set>
+			 <ref bean="firstEngine"/>
+			 <ref bean="secondEngine"/>
+			 <ref bean="thirdEngine"/>
+			 <ref bean="fourthEngine"/>
+			</util:set>
+		</property>
+		<!--End: Injecting List collection -->
+		
+		<!--Start: Injecting Map collection -->
+		<property name="mapEngine">
+			<util:map>
+			 <entry key="first"><ref bean="firstEngine"/></entry>
+			 <entry key="second"><ref bean="secondEngine"/></entry>
+			 <entry key="third"><ref bean="thirdEngine"/></entry>
+			 <entry key="fourth"><ref bean="fourthEngine"/></entry>
+			</util:map>
+		</property>
+		<!--End: Injecting List collection -->
+		
+		<!--Start: Injecting Array of object -->
+		<property name="arrayEngine">
+			<list>
+			 <ref bean="firstEngine"/>
+			 <ref bean="secondEngine"/>
+			 <ref bean="thirdEngine"/>
+			 <ref bean="fourthEngine"/>
+			</list>
+		</property>
+		<!--End: Injecting Array of object -->
+	</bean>
+	
+	<!--Start: Creating bean of collection -->
+	<util:list id="listId">
+		 <ref bean="firstEngine"/>
+		 <ref bean="secondEngine"/>
+		 <ref bean="thirdEngine"/>
+		 <ref bean="fourthEngine"/>
+	</util:list>
+	<!--End: Creating bean of collection -->
+</beans>
